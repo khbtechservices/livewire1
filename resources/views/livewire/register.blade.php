@@ -1,16 +1,20 @@
-<form class="" action="index.html" method="post">
+<form wire:submit.prevent="register" class="" action="index.html" method="post">
 
     <div class="">
+        <label for="name">Name</label>
+        <input wire:model="name" type="text" name="name" id="name" value="">
+    </div>
+    <div class="">
         <label for="email">Email</label>
-        <input type="text" name="email" id="email" value="">
+        <input wire:model="email" type="text" name="email" id="email" value="">
     </div>
     <div class="">
         <label for="password">Password</label>
-        <input type="password" name="password" id="password" value="">
+        <input wire:model="password" type="password" name="password" id="password" value="">
     </div>
     <div class="">
         <label for="passwordConfirmation">Password Confirmation</label>
-        <input type="password" name="passwordConfirmation" id="passwordConfirmation" value="">
+        <input wire:model="passwordConfirmation" type="password" name="passwordConfirmation" id="passwordConfirmation" value="">
     </div>
 
     <div class="">
