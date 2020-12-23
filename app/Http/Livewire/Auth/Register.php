@@ -41,4 +41,10 @@ class Register extends Component
     {
         return view('livewire.auth.register');
     }
+
+    public function updatedEmail() {
+        $this->validate([
+            'email' => 'unique:users'
+        ]);
+    }
 }

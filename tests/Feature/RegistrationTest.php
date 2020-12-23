@@ -21,8 +21,6 @@ class RegistrationTest extends TestCase
 
     }
 
-
-
     /** @test **/
 
     function can_register() {
@@ -38,6 +36,20 @@ class RegistrationTest extends TestCase
         $this->assertTrue(User::where('email','ken@abc.com')->exists());
 
         $this->assertEquals('ken@abc.com', auth()->user()->email);
+
+    }
+
+    /** @test **/
+
+    function name_is_required() {
+
+        Livewire::test('auth.register')
+            ->set('name','')
+            ->set('email','')
+            ->set('password','MyPassword')
+            ->set('passwordConfirmation','MyPassword')
+            ->call('register')
+            ->assertHasErrors(['name'=>'required']);
 
     }
 
@@ -123,6 +135,23 @@ class RegistrationTest extends TestCase
             ->set('password','MyPassword1')
             ->set('passwordConfirmation','MyPassword1')
             ->call('register')
+            ->assertHasErrors(['email'=>'unique']);
+
+    }
+
+    /** @test **/
+    function see_email_must_be_unique_message_as_user_types() {
+
+        User::create([
+            'name' => 'Ken',
+            'email' => 'ken@abc.com',
+            'password' => 'password'
+        ]);
+
+        Livewire::test('auth.register')
+            ->set('email','ken@abc.co')
+            ->assertHasNoErrors()
+            ->set('email','ken@abc.com')
             ->assertHasErrors(['email'=>'unique']);
 
     }
