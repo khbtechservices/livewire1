@@ -12,12 +12,12 @@
     </div>
     <div class="">
         <label for="password">Password</label>
-        <input wire:model="password" type="password" name="password" id="password" value="">
+        <input wire:model.lazy="password" type="password" name="password" id="password" value="">
         @error('password') <span>{{$message}}</span> @enderror
     </div>
     <div class="">
         <label for="passwordConfirmation">Password Confirmation</label>
-        <input wire:model="passwordConfirmation" type="password" name="passwordConfirmation" id="passwordConfirmation" value="">
+        <input wire:model.lazy="passwordConfirmation" type="password" name="passwordConfirmation" id="passwordConfirmation" value="">
     </div>
 
     <div class="">
