@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Auth;
 
 use Livewire\Component;
 
@@ -24,17 +24,21 @@ class Register extends Component
             'password' => 'required|min:8|same:passwordConfirmation',
         ]);
 
-        User::create([
+        $user = User::create([
 
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
 
         ]);
+
+        auth()->login($user);
+
+        return redirect('/');
     }
 
     public function render()
     {
-        return view('livewire.register');
+        return view('livewire.auth.register');
     }
 }
