@@ -12,11 +12,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::redirect('/', 'dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::redirect('/', 'dashboard');
-
     Route::livewire('/dashboard', 'dashboard');
+    Route::livewire('/profile', 'profile');
 });
 
 Route::middleware('guest')->group(function () {
