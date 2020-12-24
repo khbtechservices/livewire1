@@ -14,6 +14,21 @@ class RegistrationTest extends TestCase
 {
     use RefreshDatabase;
 
+    // @test **//
+
+    function test_config() {
+
+        // dd(config('database.default'));
+
+        User::create([
+            'name' => 'Test',
+            'email' => 'test@test.com',
+            'password' => 'password'
+        ]);
+
+        $this->assertTrue(User::where('email','test@test.com')->exists());
+    }
+
     /** @test **/
     function registration_page_contains_livewire_component() {
 
