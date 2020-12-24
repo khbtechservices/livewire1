@@ -44,7 +44,13 @@ class Register extends Component
 
     public function updatedEmail() {
         $this->validate([
-            'email' => 'unique:users'
+            'email' => 'email|unique:users'
+        ]);
+    }
+
+    public function updatedPassword() {
+        $this->validate([
+            'password' => 'min:8'
         ]);
     }
 }
