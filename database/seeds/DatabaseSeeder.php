@@ -2,6 +2,8 @@
 
 use Illuminate\Database\Seeder;
 
+use App\User;
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -11,6 +13,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UserSeeder::class);
+        factory(User::class)->create([
+            'name' => 'Admin',
+            'email' => 'admin@pneuma.com'
+        ]);
     }
 }

@@ -13,8 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return ['success'];
+Route::middleware('auth')->group(function () {
+    Route::redirect('/', 'dashboard');
+
+    Route::livewire('/dashboard', 'dashboard');
 });
 
-Route::livewire('/register', 'auth.register');
+Route::middleware('guest')->group(function () {
+    Route::livewire('/register', 'auth.register')->name('auth.register');;
+    Route::livewire('/login', 'auth.login')->layout('layouts.auth')->name('auth.login');
+});
