@@ -24,7 +24,7 @@
         </div>
 
         <div class="mt-5 md:mt-0 md:col-span-4">
-            <form action="#" method="POST">
+            <form wire:submit.prevent="save" action="#" method="POST">
                 <div class="shadow sm:rounded-md sm:overflow-hidden">
                     <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
                         <div class="grid grid-cols-3 gap-6">
@@ -33,10 +33,9 @@
                                     Username
                                 </label>
                                 <div class="mt-1 flex rounded-md shadow-sm">
-                                    <input wire:model="username" type="text" name="username" id="username" class="@error('name') border-red-500 @enderror focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300"
-                                        placeholder="Username">
-                                    @error('username')<div class="text-red-600 text-sm mt-1">{{ $message }}</div>@enderror
+                                    <input wire:model="username" type="text" name="username" id="username" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-md sm:text-sm border-gray-300 @error('username') border-red-500 @enderror">
                                 </div>
+                                @error('username')<div class="text-red-600 text-sm mt-1">{{ $message }}</div>@enderror
                             </div>
                         </div>
 
@@ -45,11 +44,9 @@
                                 About
                             </label>
                             <div class="mt-1">
-                                <textarea id="about" name="about" rows="3" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border-gray-300 rounded-md" placeholder="you@example.com"></textarea>
+                                <textarea wire:model.lazy="about" id="about" name="about" rows="3" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border-gray-300 rounded-md @error('about') border-red-500 @enderror"></textarea>
                             </div>
-                            <p class="mt-2 text-sm text-gray-500">
-                                Brief description for your profile. URLs are hyperlinked.
-                            </p>
+                            @error('about')<div class="text-red-600 text-sm mt-1">{{ $message }}</div>@enderror
                         </div>
 
                         <div>

@@ -11,9 +11,17 @@ class Profile extends Component
     public $about = '';
 
 
+    public function mount() {
+
+        $user = auth()->user();
+
+        $this->username = $user->username;
+
+        $this->about = $user->about;
+
+    }
 
     public function save() {
-
 
         $data = $this->validate([
             'username' => 'required|alpha_num|min:6|max:30',
@@ -23,14 +31,18 @@ class Profile extends Component
         auth()->user()->update($data);
     }
 
-    // public function updateUsername() {
-    //     $this->validate([
-    //         'username' => 'alpha_num'
-    //     ]);
-    // }
-
     public function render()
     {
         return view('livewire.profile');
     }
+
+
+    public function updateUsername() {
+
+        $this->validate([
+            'username' => 'alpha_num|min:6|max:30'
+        ]);
+
+    }
+
 }
