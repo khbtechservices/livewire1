@@ -10,6 +10,8 @@ class Profile extends Component
 
     public $about = '';
 
+    public $saved = false;
+
 
     public function mount() {
 
@@ -29,19 +31,27 @@ class Profile extends Component
         ]);
 
         auth()->user()->update($data);
+
+        $this->saved = true;
     }
+
 
     public function render()
     {
         return view('livewire.profile');
     }
 
+    public function updated() {
+        $this->saved = false;
+    }
 
-    public function updateUsername() {
+    public function updateAbout() {
+        $this->validate( ['about'=>'max:120'] );
+    }
 
-        $this->validate([
-            'username' => 'alpha_num|min:6|max:30'
-        ]);
+    public function updatedUsername() {
+
+        $this->validate( ['username' => 'alpha_num|min:6|max:30'] );
 
     }
 

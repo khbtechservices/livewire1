@@ -49,6 +49,22 @@ class ProfileTest extends TestCase
     }
 
     /** @test **/
+    function success_message_viewable_upon_save() {
+
+        $user = factory(User::class)->create([
+            'username' => 'foofoofoo',
+            'about' => 'bar'
+        ]);
+
+        Livewire::actingAs($user)
+            ->test('profile')
+            ->assertDontSee('Profile saved!')
+            ->call('save')
+            ->assertSee('Profile saved!');
+
+    }
+
+    /** @test **/
     function profile_data_is_prepopulated() {
 
         $user = factory(User::class)->create([
