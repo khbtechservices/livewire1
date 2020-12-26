@@ -10,8 +10,6 @@ class Profile extends Component
 
     public $about = '';
 
-    public $saved = false;
-
 
     public function mount() {
 
@@ -32,7 +30,8 @@ class Profile extends Component
 
         auth()->user()->update($data);
 
-        $this->saved = true;
+        $this->dispatchBrowserEvent('notify');
+
     }
 
 
@@ -41,9 +40,6 @@ class Profile extends Component
         return view('livewire.profile');
     }
 
-    public function updated() {
-        $this->saved = false;
-    }
 
     public function updateAbout() {
         $this->validate( ['about'=>'max:120'] );
