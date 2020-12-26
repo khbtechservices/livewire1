@@ -52,12 +52,42 @@
                         </div>
 
                     </div>
-                    <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
-                        <button type="submit"
-                            class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                            Save
-                        </button>
+
+                    <div class="space-x-3 flex justify-end items-center px-4 py-3">
+
+                        <span>
+                            @if(session()->has('notify-saved'))
+                            <span class="inline-flex text-green-600"
+                                x-data="{open: true}"
+                                x-init="
+                                    setTimeout( () => {open: false}, 2500 );
+                                    setTimeout( () => {$refs.this.remove()}, 3500 );
+                                "
+                                x-show="open"
+                                x-show.transition.duration.1000ms="open"
+                                x-ref="this"
+                            >
+                                Saved!
+                            </span>
+                            @endif
+                        </span>
+
+                        <span class="inline-flex rounded-md shadow-sm">
+                            <button type="reset"
+                                class="inline-flex justify-center py-2 px-4 border border-transparent border-gray-300 text-gray-700 shadow-sm text-sm font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 ">
+                                Cancel
+                            </button>
+                        </span>
+
+                        <span class="inline-flex rounded-md shadow-sm">
+                            <button type="submit"
+                                class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                Save
+                            </button>
+                        </span>
+
                     </div>
+
                 </div>
             </form>
         </div>
