@@ -14,13 +14,13 @@
                     <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
                         <div class="grid grid-cols-3 gap-6">
                             <div class="col-span-3 sm:col-span-2">
-                                <label for="company_website" class="block text-sm font-medium text-gray-700">
-                                    Username
-                                </label>
-                                <div class="mt-1 flex rounded-md shadow-sm">
-                                    <input wire:model="username" type="text" name="username" id="username" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-md sm:text-sm border-gray-300 @error('username') border-red-500 @enderror">
-                                </div>
-                                @error('username')<div class="text-red-600 text-sm mt-1">{{ $message }}</div>@enderror
+
+                                <x-input.group label="Username" for="username">
+
+                                    <x-input.text wire:model="username" id="username" name="username" />
+
+                                </x-input.group>
+
                             </div>
                         </div>
 
