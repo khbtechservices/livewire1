@@ -110,7 +110,10 @@
         </main>
     </div>
 
+    {{--
     <x-notification />
-    
+    --}}
+
+
 </div>
 @overwrite
