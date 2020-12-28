@@ -6,6 +6,8 @@ use Livewire\Component;
 
 class Profile extends Component
 {
+    public $name = '';
+
     public $username = '';
 
     public $about = '';
@@ -16,6 +18,8 @@ class Profile extends Component
     public function mount() {
 
         $user = auth()->user();
+
+        $this->name = $user->name;
 
         $this->username = $user->username;
 
@@ -28,6 +32,7 @@ class Profile extends Component
     public function save() {
 
         $data = $this->validate([
+            'name' => 'required|max:60',
             'username' => 'required|alpha_num|min:6|max:30',
             'about' => 'max:120',
             'birthday' => 'sometimes',
@@ -47,9 +52,12 @@ class Profile extends Component
         return view('livewire.profile');
     }
 
-
-    public function updateAbout() {
+    public function updatedAbout() {
         $this->validate( ['about'=>'max:120'] );
+    }
+
+    public function updatedName() {
+        $this->validate( ['name' => 'max:60'] );
     }
 
     public function updatedUsername() {

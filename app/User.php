@@ -37,4 +37,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'birthday' => 'date'
     ];
+
+    public function avatarUrl() {
+
+        return 'https://www.gravatar.com/avatar/' .
+            md5( strtolower( trim( $this->email ) ) );
+
+    }
 }

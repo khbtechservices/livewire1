@@ -13,7 +13,7 @@
 
     <input {{$attributes}}
         type = "text"
-        class = "{{ $leadingAddOn ? 'rounded-r-md' : ''}} {{ $trailingAddOn ? 'rounded-l-md' : ''}} focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full sm:text-sm border-gray-300"
+        class = "{{ $leadingAddOn ? 'rounded-r-md' : ''}} {{ $trailingAddOn ? 'rounded-l-md' : ''}} {{ !$leadingAddOn && !$trailingAddOn ? 'rounded-md' : ''}} focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full sm:text-sm border-gray-300"
     >
 
     @if($trailingAddOn)
