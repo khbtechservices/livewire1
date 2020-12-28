@@ -37,7 +37,7 @@
 
                             <x-input.group label="About" for="about" help-text="A sentence or two about yourself (max 120 chars)." :error="$errors->first('about')">
 
-                                <x-input.textarea wire:model="about" id="about" name="about" />
+                                <x-input.textarea-rich wire:model="about" id="about" name="about" />
 
                             </x-input.group>
 
