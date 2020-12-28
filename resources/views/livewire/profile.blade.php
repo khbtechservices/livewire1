@@ -55,16 +55,18 @@
 
                         <div>
 
-                            <x-input.group label="Photo" for="photo">
+                            <x-input.group label="Photo" for="photo" :error="$errors->first('newAvatar')">
 
                                 <div class="mt-2 flex items-center">
                                     <span class="inline-block h-12 w-12 rounded-full overflow-hidden bg-gray-100">
                                         <img class="inline-block h-10 w-10 rounded-full" src="{{ auth()->user()->avatarUrl() }}" alt="Profile Pic">
                                     </span>
-                                    <button type="button"
+
+                                    <input type="file" wire:model="newAvatar">
+                                    <!-- <button type="button"
                                         class="ml-5 bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                                         Change
-                                    </button>
+                                    </button> -->
                                 </div>
 
                             </x-input.group>
