@@ -10,6 +10,8 @@ class Profile extends Component
 
     public $about = '';
 
+    public $birthday = null;
+
 
     public function mount() {
 
@@ -19,13 +21,16 @@ class Profile extends Component
 
         $this->about = $user->about;
 
+        $this->birthday = optional($user->birthday)->format('m/d/Y');
+
     }
 
     public function save() {
 
         $data = $this->validate([
             'username' => 'required|alpha_num|min:6|max:30',
-            'about' => 'max:120'
+            'about' => 'max:120',
+            'birthday' => 'sometimes',
         ]);
 
         auth()->user()->update($data);

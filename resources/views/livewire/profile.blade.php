@@ -17,7 +17,17 @@
 
                             <x-input.group label="Username" for="username" :error="$errors->first('username')">
 
-                                <x-input.text wire:model="username" id="username" name="username" />
+                                <x-input.text wire:model="username" id="username" name="username" trailing-add-on="@pneuma.com"/>
+
+                            </x-input.group>
+
+                        </div>
+
+                        <div>
+
+                            <x-input.group label="Birthday" for="birthday" :error="$errors->first('birthday')">
+
+                                <x-input.date wire:model="birthday" id="birthday" name="birthday" placeholder="MM/DD/YYYY" />
 
                             </x-input.group>
 
@@ -48,7 +58,7 @@
                                         Change
                                     </button>
                                 </div>
-                                
+
                             </x-input.group>
 
                         </div>
