@@ -57,9 +57,15 @@
 
                             <x-input.group label="Photo" for="photo" :error="$errors->first('newAvatar')">
 
-                                <div class="mt-2 flex items-center">
+                                <div class="mt-2 space-x-3 flex items-center">
                                     <span class="inline-block h-12 w-12 rounded-full overflow-hidden bg-gray-100">
-                                        <img class="inline-block h-10 w-10 rounded-full" src="{{ auth()->user()->avatarUrl() }}" alt="Profile Pic">
+
+                                        <img
+                                            class="inline-block h-12 w-12 rounded-full"
+                                            src="{{ $newAvatar ? $newAvatar->temporaryUrl() : auth()->user()->avatarUrl() }}"
+                                            alt="Profile Pic"
+                                        >
+
                                     </span>
 
                                     <input type="file" wire:model="newAvatar">
