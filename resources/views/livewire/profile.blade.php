@@ -57,19 +57,35 @@
 
                             <x-input.group label="Photo" for="photo" :error="$errors->first('newAvatar')">
 
-                                <x-input.file-upload id="file" wire:model="newAvatar">
+                                <div class="mt-2 space-x-3 flex items-center">
 
-                                    <span class="inline-block h-12 w-12 rounded-full overflow-hidden bg-gray-100">
+                                    <div class="flex-initial">
 
-                                        <img
+                                        <span class="inline-block h-12 w-12 rounded-full overflow-hidden bg-gray-100">
+
+                                            <img
                                             class="inline-block h-12 w-12 rounded-full"
                                             src="{{ $newAvatar ? $newAvatar->temporaryUrl() : auth()->user()->avatarUrl() }}"
                                             alt="Profile Pic"
-                                        >
+                                            >
 
-                                    </span>
+                                        </span>
 
-                                </x-input.file-upload>
+                                    </div>
+
+                                    <div class="flex-auto">
+
+                                        <x-input.filepond wire:model="newAvatar" id="newAvatar"/>
+
+                                    </div>
+
+                                </div>
+
+                                <!-- <x-input.file-upload id="file" wire:model="newAvatar">
+
+
+
+                                </x-input.file-upload> -->
 
                             </x-input.group>
 
