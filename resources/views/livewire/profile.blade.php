@@ -58,6 +58,7 @@
                             <x-input.group label="Photo" for="photo" :error="$errors->first('newAvatar')">
 
                                 <div class="mt-2 space-x-3 flex items-center">
+
                                     <span class="inline-block h-12 w-12 rounded-full overflow-hidden bg-gray-100">
 
                                         <img
@@ -68,11 +69,24 @@
 
                                     </span>
 
-                                    <input type="file" wire:model="newAvatar">
-                                    <!-- <button type="button"
-                                        class="ml-5 bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                        Change
-                                    </button> -->
+                                    <div x-data="{ focused : false }">
+
+                                        <span class="rounded-md shadow-sm">
+
+                                            <input @focus="{ focused = true }" @blur="{ focused = false }" class="sr-only" type="file" id="file" wire:model="newAvatar">
+
+                                            <label
+                                                for="file"
+                                                :class="{ 'outline-none ring-2 ring-offset-2 ring-indigo-500' : focused }"
+                                                type="button"
+                                                class="bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 ">
+                                                Select File
+                                            </label>
+
+                                        </span>
+
+                                    </div>
+
                                 </div>
 
                             </x-input.group>
